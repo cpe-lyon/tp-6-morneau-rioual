@@ -1,4 +1,4 @@
-<h1 align="center" style="box-shadow: 10px 5px 5px red">Compte rendu TP4</h1>                                   
+<h1 align="center" style="box-shadow: 10px 5px 5px red">Compte rendu TP6</h1>                                   
 <p>RIOUAL Matthieu :computer:</p>
 <p>MORNEAU Hugo :computer:</P>
 
@@ -14,4 +14,10 @@
 
 5) ```df -T``` n'affiche pas notre disque car celui-ci n'est pas monté.
 
-6) 
+6) On va dans le fichier _/dev/etc/fstab_ et y ajoute les lignes:
+```
+/dev/sdb1 /data ext2 defaults 0 0
+/dev/sdb2 /win ext2 defaults 0 0
+```
+
+7)
