@@ -21,7 +21,7 @@
 ```
 On force la configuration avec ```mount -a```
 
-7) Après avoir redémaré la VM, on voit dans les répertoire _/data_ et _/win_ que le montage a bien été effectué.
+7) Après avoir redémarré la VM, on voit dans les répertoire _/data_ et _/win_ que le montage a bien été effectué.
 
 8)
 
@@ -29,4 +29,15 @@ On force la configuration avec ```mount -a```
 
 ## Exercice 2
 
-1) 
+1) Le fichier _50-curtin-settings.cfg_ n'est pas présent dans _/etc/default/grub.d_, seul _init-select.cfg_ y est. Ce fichier ne sert plus à rien dans la version courrante et sera suprrimé dans le futur.
+
+2) On change ```GRUB_TIMEOUT_STYLE=menu``` et ```GRUB_TIMEOUT=10``` pour que le menu s'affiche pendant 10 secondes au démarrage.
+
+3) On lance ```update-grub```pour mettre à jour le fichier de configuration final.
+
+4) Le menu GRUB apparaît bien pendant 10 sec avant la sélection automatique de l'OS.
+
+5) Pour changer la résolution de GRUB, on décommente ```GRUB_GFXMODE``` et met sa valeur à 1280x1024 (on obtient les valeurs possibles avec la commande ```vbeinfo``` sur le GRUB. Pour la résolution du linux, on ajoute la ligne ```GRUB_GFXPLAYLOAD_LINUX=1280x1024```.
+On lance update-grub pour finaliser la configuration.
+
+6) On installe le paquet avec ```sudo apt install grub2-splashimages```. On ajoute dans le fichier _grub_ la ligne ```GRUB_BACKGROUND=usr/share/images/Plasma-lamp.tga``` puis on met à jour.
