@@ -40,4 +40,35 @@ On force la configuration avec ```mount -a```
 5) Pour changer la résolution de GRUB, on décommente ```GRUB_GFXMODE``` et met sa valeur à 1280x1024 (on obtient les valeurs possibles avec la commande ```vbeinfo``` sur le GRUB. Pour la résolution du linux, on ajoute la ligne ```GRUB_GFXPLAYLOAD_LINUX=1280x1024```.
 On lance update-grub pour finaliser la configuration.
 
-6) On installe le paquet avec ```sudo apt install grub2-splashimages```. On ajoute dans le fichier _grub_ la ligne ```GRUB_BACKGROUND=usr/share/images/Plasma-lamp.tga``` puis on met à jour.
+6) On installe le paquet avec ```sudo apt install grub2-splashimages```. On ajoute dans le fichier _grub_ la ligne ```GRUB_BACKGROUND=usr/share/images/grub/Plasma-lamp.tga``` puis on met à jour.
+
+7) On installe le paquet: ```sudo apt install grub2-themes-ubuntu-mate```. On ajoute la ligne dans _grub_: ```GRUB_THEME=/boot/grub/theme/ubuntu-mate/theme.txt```. On met à jour.
+
+8) On ajoute les ligne suivante au fichier _/etc/grub.d/40\_custom_
+```
+## ligne vide
+menuentry "   " {
+	true
+}
+menuentry 'Arrêt du système' {
+	halt
+}
+menuentry 'Redémarrage du système' {
+	reboot
+}
+```
+On met à jour.
+
+9) On génère la configuration du clavier français pour que grub puisse le reconnaître:
+```
+sudo mkdir /boot/grub/layouts
+sudo grub-kbdcomp -o /boot/grub/layouts/fr.gkb fr
+```
+On ajoute la ligne ```GRUB_TERMINAL_INPUT=at_keyboard``` au _grub_.
+On ajoute les lignes suivantes à _/etc/grub.d/40\_custom_
+```
+# Clavier fr
+insmod keylayouts
+keymap fr
+```
+On met à jour.
