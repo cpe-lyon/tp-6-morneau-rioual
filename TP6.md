@@ -17,7 +17,16 @@
 6) On va dans le fichier _/dev/etc/fstab_ et y ajoute les lignes:
 ```
 /dev/sdb1 /data ext2 defaults 0 0
-/dev/sdb2 /win ext2 defaults 0 0
+/dev/sdb2 /win  ext2 defaults 0 0
 ```
+On force la configuration avec ```mount -a```
 
-7)
+7) Après avoir redémaré la VM, on voit dans les répertoire _/data_ et _/win_ que le montage a bien été effectué.
+
+8)
+
+9)
+
+## Exercice 2
+
+1) 
